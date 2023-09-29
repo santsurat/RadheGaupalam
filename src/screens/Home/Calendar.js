@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   StyleSheet,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   ScrollView,
   Button,
   Image,
@@ -12,10 +13,10 @@ import {
 import { ROUTES } from '../../constants';
 import { Calendar } from 'react-native-calendars'; 
 import { useFocusEffect } from '@react-navigation/native';
-// import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 const CalendarScreen = () => {
-  // const navigation = useNavigation();
+ const navigation = useNavigation();
 
   const today = new Date().toISOString().split('T')[0];
   const [markedDates, setMarkedDates] = useState({ [today]: { selected: true, selectedColor: 'skyblue' } });
@@ -56,6 +57,7 @@ const CalendarScreen = () => {
             }}>
             Calendar
           </Text>
+          <TouchableWithoutFeedback  onPress={() => navigation.navigate('Vacation')}>
           <View
             style={{
               borderWidth: 0.5,
@@ -76,12 +78,16 @@ const CalendarScreen = () => {
               }}>
               Vacation
             </Text>
+           
             <Image
               source={require('../../assets/images/holiday.png')}
               style={{ width: 20, height: 20, margin: 5, bottom: 2 }}
             />
+           
           </View>
+          </TouchableWithoutFeedback>
         </View>
+        
         <ScrollView
           style={{
             flex: 1,

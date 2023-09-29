@@ -1,43 +1,40 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableWithoutFeedback, Image } from 'react-native';
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 const BottomSheet = () => {
-  const [isStartPickerVisible, setStartPickerVisible] = useState(false);
-  const [isEndPickerVisible, setEndPickerVisible] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
+  const [showStartDatePicker, setShowStartDatePicker] = useState(false); 
+  const [showEndDatePicker, setShowEndDatePicker] = useState(false);
 
-  // const formatDateString = (date) => {
-  //   const day = date.getDate();
-  //   const year = date.getFullYear();
-  //   return `${day} ${year}`;
-  // };
+  const formatDateString = (date) => {
+    const day = date.getDate();
+    const year = date.getFullYear();
+    return `${day} ${year}`;
+  };
+
+  const handleDateChange = (event, selectedDate) => {
+    if (event.type === 'set') {
+      setStartDate(selectedDate);
+    }
+   
+  };
 
   const showStartPicker = () => {
-    setStartPickerVisible(true);
+    setShowStartDatePicker(true);
   };
 
   const showEndPicker = () => {
-    setEndPickerVisible(true);
+    setShowEndDatePicker(true);
   };
 
   const hideStartPicker = () => {
-    setStartPickerVisible(false);
+    setShowStartDatePicker(false);
   };
 
   const hideEndPicker = () => {
-    setEndPickerVisible(false);
-  };
-
-  const handleStartDateConfirm = (date) => {
-    setStartDate(date);
-    hideStartPicker();
-  };
-
-  const handleEndDateConfirm = (date) => {
-    setEndDate(date);
-    hideEndPicker();
+    setShowEndDatePicker(false);
   };
 
   return (
@@ -65,19 +62,25 @@ const BottomSheet = () => {
         </TouchableWithoutFeedback>
       </View>
 
-      <DateTimePickerModal
-        isVisible={isStartPickerVisible}
-        mode="date"
-        onConfirm={handleStartDateConfirm}
-        onCancel={hideStartPicker}
-      />
+      {showStartDatePicker && (
+        <DateTimePicker
+          value={startDate}
+          mode="date"
+          display="spinner" 
+          onChange={handleDateChange}
+          onCancel={hideStartPicker}
+        />
+      )}
 
-      <DateTimePickerModal
-        isVisible={isEndPickerVisible}
-        mode="date"
-        onConfirm={handleEndDateConfirm}
-        onCancel={hideEndPicker}
-      />
+      {showEndDatePicker && (
+        <DateTimePicker
+          value={endDate || new Date()} 
+          mode="date"
+          display="spinner"
+          onChange={handleDateChange}
+          onCancel={hideEndPicker} 
+        />
+      )}
     </>
   );
 };

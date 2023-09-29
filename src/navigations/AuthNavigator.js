@@ -8,6 +8,7 @@ import WelcomeScreen from '../screens/auth/Welcome';
 import Tabs from './BottomTabNavigator';
 import Home from '../screens/Home/home';
 import Vacation from '../screens/Home/Vacation';
+import MyAddress from '../components/MyAddress';
 const Stack = createStackNavigator();
 
 function AuthNavigator() {
@@ -59,11 +60,11 @@ function AuthNavigator() {
         options={{headerShown: false}}
       />
 
-      {/* <Stack.Screen
-        name="BottomSheet"
-        component={BottomSheet}
+      <Stack.Screen
+        name="MyAddress"
+        component={MyAddress}
         options={{headerShown: false}}
-      /> */}
+      />
     </Stack.Navigator>
   );
 }

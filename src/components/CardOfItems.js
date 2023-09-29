@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, Image, StyleSheet, ScrollView} from 'react-native';
 import Rupee from 'react-native-vector-icons/MaterialIcons';
 
-const CardOfItems = ({selectedCategory}) => {
+const CardOfItems = ({selectedCategory, searchQuery}) => {
   const items = [
     {
       name: 'Cow Milk',
@@ -49,11 +49,10 @@ const CardOfItems = ({selectedCategory}) => {
   ];
 
   // Filter items based on the selectedCategory
-  const filteredItems = selectedCategory
-    ? items.filter(item =>
-        item.name.toLowerCase().includes(selectedCategory.toLowerCase()),
-      )
-    : items;
+  const filteredItems = items.filter(item =>
+    (selectedCategory ? item.name.toLowerCase().includes(selectedCategory.toLowerCase()) : true) &&
+    (searchQuery ? item.name.toLowerCase().includes(searchQuery.toLowerCase()) : true)
+  );
 
   return (
     <ScrollView alwaysBounceVertical={true}>

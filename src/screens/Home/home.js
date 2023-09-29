@@ -65,9 +65,11 @@ const Home = () => {
               flexDirection: 'row',
               gap: 18,
             }}>
+              <TouchableWithoutFeedback onPress={() => navigation.navigate('SearchItems')}>
             <View style={{ justifyContent: 'center', top: 10 }}>
               <Icon name="search" size={20} color="orange" />
             </View>
+            </TouchableWithoutFeedback>
             <View style={{ justifyContent: 'center', top: 10 }}>
               <Icon name="shopping-bag" size={20} color="orange" />
             </View>

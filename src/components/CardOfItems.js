@@ -106,9 +106,9 @@ const CardOfItems = ({selectedCategory, searchQuery,isEmpty}) => {
         <Text
           style={{
             color: 'black',
-            fontSize: 30,
+            fontSize: 20,
             textAlign: 'center',
-            fontWeight: '900',
+            fontWeight: '400',
           }}>
           No More Items
         </Text>
@@ -215,11 +215,9 @@ const styles = StyleSheet.create({
     color: 'black',
     top: 20,
     textAlign: 'center',
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
     marginLeft: 70,
     marginRight: 70,
-    borderStyle: 'dotted',
+    // borderStyle: 'dotted',
   },
   ltrContainer:{
     flexDirection:'row',

@@ -23,10 +23,13 @@ const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const handleCategoryPress = (category) => {
-    // Toggle the category selection
     setSelectedCategory((prevCategory) =>
       prevCategory === category ? null : category
     );
+  };
+
+  const isCategoryActive = (category) => {
+    return selectedCategory === category;
   };
 
   return (
@@ -70,9 +73,11 @@ const Home = () => {
               <Icon name="search" size={20} color="orange" />
             </View>
             </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => navigation.navigate('ShoppingBag')}>
             <View style={{ justifyContent: 'center', top: 10 }}>
               <Icon name="shopping-bag" size={20} color="orange" />
             </View>
+            </TouchableWithoutFeedback>
             <View style={{ justifyContent: 'center', top: 10 }}>
               <Notification name="notifications" size={20} color="orange" />
             </View>
@@ -100,43 +105,70 @@ const Home = () => {
               padding: 15,
             }}>
             <TouchableWithoutFeedback onPress={() => handleCategoryPress('Milk')}>
-              <Text
+              <View
                 style={{
-                  color: 'black',
+                  flexDirection: 'row',
+                  alignItems: 'center',
                   borderWidth: 1,
                   paddingHorizontal: 5,
                   borderRadius: 4,
-                  backgroundColor:
-                    selectedCategory === 'Milk' ? 'orange' : 'white',
+                  borderColor: isCategoryActive('Milk') ? 'orange' : 'black',
                 }}>
-                Milk <Close name="close" size={10} color="black" />
-              </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    marginRight: 5,
+                  }}>
+                  Milk
+                </Text>
+                {isCategoryActive('Milk') && (
+                  <Close name="close" size={10} color="black" />
+                )}
+              </View>
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={() => handleCategoryPress('Ghee')}>
-              <Text
+              <View
                 style={{
-                  color: 'black',
+                  flexDirection: 'row',
+                  alignItems: 'center',
                   borderWidth: 1,
                   paddingHorizontal: 5,
                   borderRadius: 4,
-                  backgroundColor:
-                    selectedCategory === 'Ghee' ? 'orange' : 'white',
+                  borderColor: isCategoryActive('Ghee') ? 'orange' : 'black',
                 }}>
-                Ghee <Close name="close" size={10} color="black" />
-              </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    marginRight: 5,
+                  }}>
+                  Ghee
+                </Text>
+                {isCategoryActive('Ghee') && (
+                  <Close name="close" size={10} color="black" />
+                )}
+              </View>
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={() => handleCategoryPress('Paneer')}>
-              <Text
+              <View
                 style={{
-                  color: 'black',
+                  flexDirection: 'row',
+                  alignItems: 'center',
                   borderWidth: 1,
                   paddingHorizontal: 5,
                   borderRadius: 4,
-                  backgroundColor:
-                    selectedCategory === 'Paneer' ? 'orange' : 'white',
+                  borderColor: isCategoryActive('Paneer') ? 'orange' : 'black',
                 }}>
-                Paneer <Close name="close" size={10} color="black" />
-              </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    marginRight: 5,
+                  }}>
+                  Paneer
+                </Text>
+                {isCategoryActive('Paneer') && (
+                  <Close name="close" size={10} color="black" />
+                )}
+              </View>
             </TouchableWithoutFeedback>
           </View>
           <View
@@ -156,7 +188,7 @@ const Home = () => {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: 'purple', 
+    backgroundColor: 'purple',
   },
 });
 

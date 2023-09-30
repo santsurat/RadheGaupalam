@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, Image, StyleSheet, ScrollView} from 'react-native';
 import Rupee from 'react-native-vector-icons/MaterialIcons';
 
-const CardOfItems = ({selectedCategory, searchQuery}) => {
+const CardOfItems = ({selectedCategory, searchQuery,isEmpty}) => {
   const items = [
     {
       name: 'Cow Milk',
@@ -48,11 +48,29 @@ const CardOfItems = ({selectedCategory, searchQuery}) => {
     },
   ];
 
-  // Filter items based on the selectedCategory
-  const filteredItems = items.filter(item =>
-    (selectedCategory ? item.name.toLowerCase().includes(selectedCategory.toLowerCase()) : true) &&
-    (searchQuery ? item.name.toLowerCase().includes(searchQuery.toLowerCase()) : true)
-  );
+  const filteredItems = items.filter((item) => {
+    const name = item.name.toLowerCase();
+    const selectedCategoryLower = selectedCategory
+      ? selectedCategory.toLowerCase()
+      : '';
+    const searchQueryLower = searchQuery ? searchQuery.toLowerCase() : '';
+
+    if (isEmpty) { 
+      return false;
+    }
+
+    return (
+      (selectedCategoryLower === '' ||
+        name.includes(selectedCategoryLower)) &&
+      (searchQueryLower === '' || name.includes(searchQueryLower))
+    );
+  });
+
+
+
+  if (isEmpty || (searchQuery && filteredItems.length === 0)) {
+    return   <Text style={styles.noResultsText}>No results to show</Text>; 
+  }
 
   return (
     <ScrollView alwaysBounceVertical={true}>
@@ -126,6 +144,12 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 8,
     marginLeft: 10,
+  },
+  noResultsText: {
+    color: '#333',
+    marginTop: '70%',
+    fontSize: 18,
+    textAlign: 'center',
   },
   name: {
     color: 'black',

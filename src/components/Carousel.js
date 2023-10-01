@@ -8,10 +8,8 @@ const Carousel = () => {
 
   useEffect(() => {
     let interval = setInterval(() => {
-      // Calculate the next index based on the activeIndex
+      
       const nextIndex = (activeIndex + 1) % CarouselData.length;
-
-      // Scroll to the next index without animation
       flatlistRef.current.scrollToIndex({
         index: nextIndex,
         animated: true,
@@ -58,7 +56,7 @@ const Carousel = () => {
     },
   ];
 
-  // Concatenate the data for infinite looping, and add a prefix to the IDs
+  
   const concatenatedData = [
     ...CarouselData,
     ...CarouselData.map(item => ({ ...item, id: `second_${item.id}` })),
@@ -111,7 +109,6 @@ const Carousel = () => {
           marginTop: 10,
         }}
       >
-        {/* Your dot indicators can be rendered here */}
       </View>
     </View>
   );

@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import {
   View,
   Text,
-  SafeAreaView,
   StyleSheet,
-  TouchableOpacity,
   ScrollView,
   Image,
   TouchableWithoutFeedback,
@@ -14,7 +12,7 @@ import Notification from 'react-native-vector-icons/Ionicons';
 import Locationdot from 'react-native-vector-icons/FontAwesome6';
 import Close from 'react-native-vector-icons/MaterialCommunityIcons';
 import Carousel from '../../components/Carousel';
-import CardOfItems from '../../components/CardOfItems'; // Updated import
+import CardOfItems from '../../components/CardOfItems'; 
 import { useNavigation } from '@react-navigation/native';
 
 const Home = () => {
@@ -30,6 +28,10 @@ const Home = () => {
 
   const isCategoryActive = (category) => {
     return selectedCategory === category;
+  };
+
+  const handleReplaceScreen = () => {
+    navigation.navigate('ShoppingBag'); 
   };
 
   return (
@@ -73,7 +75,7 @@ const Home = () => {
               <Icon name="search" size={20} color="orange" />
             </View>
             </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback onPress={() => navigation.navigate('ShoppingBag')}>
+            <TouchableWithoutFeedback onPress={handleReplaceScreen}>
             <View style={{ justifyContent: 'center', top: 10 }}>
               <Icon name="shopping-bag" size={20} color="orange" />
             </View>

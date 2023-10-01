@@ -12,8 +12,6 @@ import MyAddress from '../components/MyAddress';
 import SearchItems from '../components/searchItems';
 import ShoppingBag from '../components/shoppingBag';
 
-
-
 const Stack = createStackNavigator();
 
 function AuthNavigator() {
@@ -54,7 +52,7 @@ function AuthNavigator() {
       />
 
       <Stack.Screen
-        name={ROUTES.HOME}
+        name="Home"
         component={Home}
         options={{headerShown: false}}
       />
@@ -77,11 +75,11 @@ function AuthNavigator() {
         options={{headerShown: false}}
       />
 
-      <Stack.Screen
-        name="ShoppingBag"
-        component={ShoppingBag}
-        options={{headerShown: false}}
-      />
+      <Stack.Screen 
+      name="ShoppingBag" 
+      component={ShoppingBag}
+      options={{headerShown:false}}
+       />
     </Stack.Navigator>
   );
 }

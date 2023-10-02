@@ -11,6 +11,7 @@ import Vacation from '../screens/Home/Vacation';
 import MyAddress from '../components/MyAddress';
 import SearchItems from '../components/searchItems';
 import ShoppingBag from '../components/shoppingBag';
+import ProductDetails from '../components/productDetails';
 
 const Stack = createStackNavigator();
 
@@ -75,11 +76,19 @@ function AuthNavigator() {
         options={{headerShown: false}}
       />
 
-      <Stack.Screen 
-      name="ShoppingBag" 
-      component={ShoppingBag}
-      options={{headerShown:false}}
-       />
+      <Stack.Screen
+        name="ShoppingBag"
+        component={ShoppingBag}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProductDetails"
+        component={ProductDetails}
+        options={{
+          title: 'Product Detail',
+          headerShown: false, 
+        }}
+      />
     </Stack.Navigator>
   );
 }

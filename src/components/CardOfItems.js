@@ -1,6 +1,8 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet, ScrollView} from 'react-native';
+import {View, Text, Image, StyleSheet, ScrollView,TouchableWithoutFeedback} from 'react-native';
 import Rupee from 'react-native-vector-icons/MaterialIcons';
+import { useNavigation } from '@react-navigation/native';
+
 
 const CardOfItems = ({selectedCategory, searchQuery,isEmpty}) => {
   const items = [
@@ -72,10 +74,20 @@ const CardOfItems = ({selectedCategory, searchQuery,isEmpty}) => {
     return   <Text style={styles.noResultsText}>No results to show</Text>; 
   }
 
+  const navigation = useNavigation();
+
+  const navigateToProductDetail = (selectedIndex) => {
+    navigation.navigate('ProductDetails', { items,selectedIndex });
+  };
+
   return (
     <ScrollView alwaysBounceVertical={true}>
   {filteredItems.map((item, index) => (
-  <View style={styles.cardContainer} key={index}>
+    <TouchableWithoutFeedback
+    key={index}
+    onPress={() => navigateToProductDetail(index)}
+  >
+  <View style={styles.cardContainer}>
     <Image source={item.imageSource} style={styles.imageCard} />
     <View>
       <Text style={styles.brand}>{item.brand}</Text>
@@ -101,6 +113,7 @@ const CardOfItems = ({selectedCategory, searchQuery,isEmpty}) => {
       </View>
     </View>
   </View>
+  </TouchableWithoutFeedback>
 ))}
       <View style={styles.footer}>
         <Text
@@ -123,7 +136,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.9,
     borderColor: 'orange',
     padding: 20,
-    marginTop: 30,
+    marginTop: 15,
     marginLeft: 10,
     marginRight: 10,
     borderRadius: 15,

@@ -23,7 +23,7 @@ const Home = () => {
   const handleCategoryPress = (category) => {
     setSelectedCategory((prevCategory) =>
       prevCategory === category ? null : category
-    );
+    ); 
   };
 
   const isCategoryActive = (category) => {

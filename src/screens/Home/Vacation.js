@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   View,
   Text,
@@ -6,6 +6,8 @@ import {
   ScrollView,
   Image,
   TouchableWithoutFeedback,
+  TouchableOpacity,
+  BackHandler,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { BottomSheetModalProvider, BottomSheetModal } from '@gorhom/bottom-sheet';
@@ -15,10 +17,19 @@ const Vacation = () => {
   const navigation = useNavigation();
 
   const bottomSheetModalRef = useRef(null);
+  const [isBottomSheetOpen, setBottomSheetOpen] = useState(false);
 
   const showBottomSheet = () => {
     if (bottomSheetModalRef.current) {
       bottomSheetModalRef.current.present();
+      setBottomSheetOpen(true);
+    }
+  };
+
+  const hideBottomSheet = () => {
+    if (bottomSheetModalRef.current) {
+      bottomSheetModalRef.current.dismiss();
+      setBottomSheetOpen(false);
     }
   };
 
@@ -26,17 +37,33 @@ const Vacation = () => {
     navigation.goBack(); 
   };
 
+  const handleBackPress = () => {
+    if (isBottomSheetOpen) {
+      hideBottomSheet();
+      return true; 
+    }
+    return false;
+  };
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', handleBackPress);
+
+    return () => {
+      BackHandler.removeEventListener('hardwareBackPress', handleBackPress);
+    };
+  }, [isBottomSheetOpen]); 
+
   return (
     <>
       <BottomSheetModalProvider enabled={false}>
         <View style={styles.mainContainer}>
           <View style={{ top: 20, flexDirection: 'row', gap: 35 }}>
-            <TouchableWithoutFeedback onPress={goBack} >
-            <Image
-              source={require('../../assets/images/left.png')}
-              style={{ width: 30, height: 30, marginLeft: 10, bottom: 5 }}
-              tintColor="white"
-            />
+            <TouchableWithoutFeedback onPress={goBack}>
+              <Image
+                source={require('../../assets/images/left.png')}
+                style={{ width: 30, height: 30, marginLeft: 10, bottom: 5 }}
+                tintColor="white"
+              />
             </TouchableWithoutFeedback>
             <Text
               style={{
@@ -106,16 +133,25 @@ const Vacation = () => {
             </TouchableWithoutFeedback>
           </ScrollView>
         </View>
+        {isBottomSheetOpen && (
+          <TouchableOpacity
+            style={styles.overlay}
+            activeOpacity={1}
+            onPress={hideBottomSheet}
+          />
+        )}
 
         <BottomSheetModal
           ref={bottomSheetModalRef}
           index={0}
           snapPoints={['30%']}
-          backgroundStyle={{ borderRadius: 30 }}>
-          <BottomSheet />
+          backgroundStyle={{ borderRadius: 30 }}
+          onDismiss={hideBottomSheet}>
+          <View style={{ flex: 1 }}>
+            <BottomSheet />
+          </View>
         </BottomSheetModal>
       </BottomSheetModalProvider>
-     
     </>
   );
 };
@@ -124,6 +160,15 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: 'purple',
+  },
+  overlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
 });
 

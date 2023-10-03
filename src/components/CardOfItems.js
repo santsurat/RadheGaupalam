@@ -9,44 +9,50 @@ const CardOfItems = ({selectedCategory, searchQuery,isEmpty}) => {
     {
       name: 'Cow Milk',
       imageSource: require('../assets/images/cowmilk.png'),
-      brand: 'RadheGaupalam',
+      brand: 'Radhe Gaupalam',
       quantity: '1 ltr',
       price: 60,
+      description:'Farm Fresh Cow Milk from Desi Cows.'
     },
     {
       name: 'Buffalo Milk',
       imageSource: require('../assets/images/buffalomilk.png'),
-      brand: 'RadheGaupalam',
+      brand: 'Radhe Gaupalam',
       quantity: '1 ltr',
       price: 70,
+      description:'Farm Fresh Buffalo Milk from Murrah Buffaloes.'
     },
     {
       name: 'Cow Paneer',
       imageSource: require('../assets/images/cowpaneer.png'),
-      brand: 'RadheGaupalam',
+      brand: 'Radhe Gaupalam',
       quantity: '1 kg',
       price: 420,
+      description:'Fresh cow paneer made with the finest ingredients.'
     },
     {
       name: 'Buffalo Paneer',
       imageSource: require('../assets/images/buffalopaneer.png'),
-      brand: 'RadheGaupalam',
+      brand: 'Radhe Gaupalam',
       quantity: '1 kg',
       price: 460,
+      description:"Creamy and Soft paneer made fresh with buffalo milk goodness."
     },
     {
       name: 'Cow Ghee',
       imageSource: require('../assets/images/desiGhee.png'),
-      brand: 'RadheGaupalam',
+      brand: 'Radhe Gaupalam',
       quantity: '1 ltr',
       price: 600,
+      description:'The production of desi cow ghee is steeped in tradition and craftsmanship. It involves a meticulous process of simmering butter made from desi cow milk to remove water and milk solids, resulting in pure golden ghee.'
     },
     {
       name: 'Buffalo Ghee',
       imageSource: require('../assets/images/buffaloghee.png'),
-      brand: 'RadheGaupalam',
+      brand: 'Radhe Gaupalam',
       quantity: '1 ltr',
       price: 1260,
+      description:'Our ghee is meticulously handcrafted from the milk of Murrah Buffaloes, known for their creamy and high-fat milk. The result is a velvety-smooth texture that melts in your mouth, leaving behind a luscious taste.'
     },
   ];
 
@@ -157,6 +163,7 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 8,
     marginLeft: 10,
+    
   },
   noResultsText: {
     color: '#333',

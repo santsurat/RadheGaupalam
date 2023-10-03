@@ -17,14 +17,11 @@ import {
   
 const Login = () => {
   
-  const navigation = useNavigation(); // Get the navigation object
+  const navigation = useNavigation(); 
 
-  // Function to handle login button press
   const handleLoginPress = () => {
-    // Perform your login logic here, and if successful, navigate to the home screen
-    // For example, if using AsyncStorage to store login state:
     AsyncStorage.setItem('isLoggedIn', 'true', () => {
-      navigation.replace('Tabs'); // Replace the current screen with the Tabs navigator
+      navigation.replace('Tabs'); 
     });
   };
 

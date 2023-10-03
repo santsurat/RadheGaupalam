@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import Rupee from 'react-native-vector-icons/MaterialIcons';
-import styles from '../../constants/wallet';
+import styles from '../../constants/walletCss';
 
 const Wallet = () => {
 

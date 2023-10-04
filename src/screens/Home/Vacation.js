@@ -112,7 +112,7 @@ const Vacation = () => {
             <TouchableWithoutFeedback onPress={showBottomSheet}>
               <View
                 style={{
-                  backgroundColor: 'purple',
+                  backgroundColor: '#15616d',
                   height: 50,
                   width: 320,
                   justifyContent: 'center',
@@ -159,7 +159,7 @@ const Vacation = () => {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: 'purple',
+    backgroundColor: '#15616d',
   },
   overlay: {
     flex: 1,

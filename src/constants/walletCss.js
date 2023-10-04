@@ -6,7 +6,7 @@ import {
 const styles = StyleSheet.create({
     mainContainer: {
       flex: 1,
-      backgroundColor: '#800080',
+      backgroundColor: '#15616d',
       alignItems: 'center',
     },
     myWallet: {
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     ticketCard: {
       width: 320,
       height: 90,
-      backgroundColor: 'purple',
+      backgroundColor: '#15616d',
       borderRadius: 10,
       margin: 25,
     },
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     backgrounOfOnlineRecharge: {
-      backgroundColor: 'purple',
+      backgroundColor: '#15616d',
       right: 35,
       margin: 6,
       borderRadius: 10,
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
       marginTop: 37,
       fontSize: 18,
       marginLeft: 10,
-      color: 'purple',
+      color: '#15616d',
       fontWeight: '500',
     },
     textOfZero:{

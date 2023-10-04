@@ -55,7 +55,7 @@ const MyAddress = () => {
               <Locationdot
                 name="location-dot"
                 size={20}
-                color="purple"
+                color="#15616d"
                 style={{}}
               />
               <Text
@@ -95,7 +95,7 @@ export default MyAddress;
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: 'purple',
+    backgroundColor: '#15616d',
   },
   cardOfAddress: {
     borderRadius: 10,

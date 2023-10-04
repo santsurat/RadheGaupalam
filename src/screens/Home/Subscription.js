@@ -70,7 +70,7 @@ import {useNavigation} from '@react-navigation/native'
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: 'purple',
+    backgroundColor: '#15616d',
   },
   shoppingText:{
     color:'white',
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     fontSize:15,
     fontWeight:'300',
     marginTop:20,
-    backgroundColor:"#800080",
+    backgroundColor:"#15616d",
     borderRadius:7,
     width:160,
     alignSelf:'center'

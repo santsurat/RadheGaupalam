@@ -187,7 +187,7 @@ const Login = () => {
   const Styles = StyleSheet.create({
     mainContainer: {
       flex: 1,
-      backgroundColor: 'purple',
+      backgroundColor: '#15616d',
     },
   });
   

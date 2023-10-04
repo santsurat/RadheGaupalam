@@ -19,7 +19,7 @@ const CalendarScreen = () => {
  const navigation = useNavigation();
 
   const today = new Date().toISOString().split('T')[0];
-  const [markedDates, setMarkedDates] = useState({ [today]: { selected: true, selectedColor: 'skyblue' } });
+  const [markedDates, setMarkedDates] = useState({ [today]: { selected: true, selectedColor: '#15616d' } });
   const [currentDate, setCurrentDate] = useState(today);
 
   const handleDayPress = (day) => {
@@ -28,7 +28,7 @@ const CalendarScreen = () => {
       delete updatedMarkedDates[currentDate].selected;
     }
 
-    updatedMarkedDates[day.dateString] = { selected: true, selectedColor: 'skyblue' };
+    updatedMarkedDates[day.dateString] = { selected: true, selectedColor: '#15616d' };
 
     setMarkedDates(updatedMarkedDates);
     setCurrentDate(day.dateString);
@@ -124,7 +124,7 @@ const CalendarScreen = () => {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: 'purple',
+    backgroundColor: '#15616d',
   },
   selectedDateText: {
     color: 'black',

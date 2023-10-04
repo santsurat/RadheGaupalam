@@ -62,7 +62,7 @@ const CustomTabBarButton = ({containerStyle, isFloat, children, onPress}) => {
               width: 60,
               height: 60,
               borderRadius: 30,
-              backgroundColor: '#800080',
+              backgroundColor: '#15616d',
             }}>
             {children}
           </View>
@@ -96,7 +96,7 @@ const Tabs = () => {
           headerShown: false,
           tabBarShowLabel: true,
           tabBarInactiveTintColor: 'black',
-          tabBarActiveTintColor: 'purple',
+          tabBarActiveTintColor: '#15616d',
         })}
         tabBar={props => <CustomTabBar props={props}></CustomTabBar>}>
         <Tab.Screen
@@ -108,7 +108,7 @@ const Tabs = () => {
               <AntDesign
                 size={22}
                 name="carryout"
-                color={focused ? 'purple' : 'black'}
+                color={focused ? '#15616d' : 'black'}
               />
             ),
             tabBarButton: props => (
@@ -130,7 +130,7 @@ const Tabs = () => {
               <AntDesign
                 size={22}
                 name="calendar"
-                color={focused ? 'purple' : 'black'}
+                color={focused ? '#15616d' : 'black'}
               />
             ),
             tabBarButton: props => (
@@ -170,7 +170,7 @@ const Tabs = () => {
               <AntDesign
                 size={22}
                 name="wallet"
-                color={focused ? 'purple' : 'black'}
+                color={focused ? '#15616d' : 'black'}
               />
             ),
             tabBarButton: props => (
@@ -190,7 +190,7 @@ const Tabs = () => {
               <AntDesign
                 size={22}
                 name="user"
-                color={focused ? 'purple' : 'black'}
+                color={focused ? '#15616d' : 'black'}
               />
             ),
             tabBarButton: props => (

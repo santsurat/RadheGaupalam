@@ -56,7 +56,7 @@ const BottomSheet = () => {
           </View>
         </TouchableWithoutFeedback>
         <TouchableWithoutFeedback onPress={showStartPicker}>
-          <View style={{ backgroundColor: 'purple', height: 50, width: 320, justifyContent: 'center', alignSelf: 'center', marginTop: 30, borderRadius: 5 }}>
+          <View style={{ backgroundColor: '#15616d', height: 50, width: 320, justifyContent: 'center', alignSelf: 'center', marginTop: 30, borderRadius: 5 }}>
             <Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontWeight: '300', letterSpacing: 0.5 }}>Add Vacation</Text>
           </View>
         </TouchableWithoutFeedback>

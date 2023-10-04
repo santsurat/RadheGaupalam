@@ -14,7 +14,7 @@ import styles from '../../constants/walletCss';
 const Wallet = () => {
 
   return (
-    <KeyboardAvoidingView // Wrap your component with KeyboardAvoidingView
+    <KeyboardAvoidingView 
     style={{ flex: 1 }}
     behavior='padding'>
     <View style={styles.mainContainer}>

@@ -22,7 +22,7 @@ function DrawerNavigator() {
       screenOptions={{
         headerShown: false,
         drawerActiveBackgroundColor: COLORS.white,
-        drawerActiveTintColor: 'purple',
+        drawerActiveTintColor: '#15616d',
         drawerLabelStyle: {
           marginLeft: -20,
         },

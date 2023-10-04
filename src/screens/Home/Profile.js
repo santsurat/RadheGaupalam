@@ -115,7 +115,7 @@ const Profile = () => {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: 'purple', // Customize the background color for Tab 3
+    backgroundColor: '#15616d',
   },
   profileText: {
     color: 'black',

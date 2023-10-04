@@ -125,7 +125,7 @@ const SearchItems = () => {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: 'purple',
+    backgroundColor: '#15616d',
   },
   noResultsText: {
     color: '#333',

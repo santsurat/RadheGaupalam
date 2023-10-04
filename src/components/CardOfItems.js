@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     bottom: 5,
     padding: 5,
-    backgroundColor: 'purple',
+    backgroundColor: '#15616d',
   },
   vegIcon: {
     width: 15,

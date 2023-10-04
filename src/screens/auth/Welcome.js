@@ -68,7 +68,7 @@ import { ROUTES } from '../../constants';
   const Styles = StyleSheet.create({
     mainContainer: {
       flex: 1,
-      backgroundColor: 'purple',
+      backgroundColor: '#15616d',
     },
     textContainer: {
       flex: 1,

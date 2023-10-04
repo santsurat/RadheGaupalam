@@ -7,7 +7,7 @@ import {
   const styles = StyleSheet.create({
     mainContainer: {
       flex: 1,
-      backgroundColor: 'purple',
+      backgroundColor: '#15616d',
     },
     productDetails: {
       textAlign: 'center',
@@ -92,7 +92,7 @@ import {
       borderRadius: 5,
     },
     backgrounOfDescription: {
-      backgroundColor: 'purple',
+      backgroundColor: '#15616d',
       height: 50,
       borderRadius: 10,
       top: 5,

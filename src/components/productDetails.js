@@ -113,7 +113,7 @@ const ProductDetails = ({route}) => {
                   styles.backgrounOfDescription,
                   {
                     backgroundColor:
-                      activeSection === 'description' ? 'purple' : '#c0c0c0',
+                      activeSection === 'description' ? '#15616d' : '#c0c0c0',
                   },
                 ]}>
                 <Text style={styles.textOfDescription}>Description</Text>
@@ -125,7 +125,7 @@ const ProductDetails = ({route}) => {
                   styles.backgrounOfDescription,
                   {
                     backgroundColor:
-                      activeSection === 'delivery' ? 'purple' : '#c0c0c0',
+                      activeSection === 'delivery' ? '#15616d' : '#c0c0c0',
                   },
                 ]}>
                 <Text style={styles.textOfDescription}>Delivery</Text>

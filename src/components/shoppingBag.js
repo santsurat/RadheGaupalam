@@ -51,6 +51,6 @@ export default ShoppingBag
 const styles = StyleSheet.create({
     mainContainer: {
         flex: 1,
-        backgroundColor: 'purple',
+        backgroundColor: '#15616d',
       },
 })

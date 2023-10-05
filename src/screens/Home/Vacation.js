@@ -91,7 +91,7 @@ const Vacation = () => {
               top: 30,
             }}>
             <Image
-              source={require('../../assets/images/8092.png')}
+              source={require('../../assets/images/Vacation.png')}
               style={{
                 width: 300,
                 height: 300,

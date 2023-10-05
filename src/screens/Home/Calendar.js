@@ -1,46 +1,44 @@
-import React, { useState, useEffect } from 'react'; // Import useEffect
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
-  SafeAreaView,
   StyleSheet,
-  TouchableOpacity,
   TouchableWithoutFeedback,
   ScrollView,
-  Button,
   Image,
 } from 'react-native';
-import { ROUTES } from '../../constants';
-import { Calendar } from 'react-native-calendars'; 
+import { Calendar } from 'react-native-calendars';
 import { useFocusEffect } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
 
 const CalendarScreen = () => {
- const navigation = useNavigation();
+  const navigation = useNavigation();
 
   const today = new Date().toISOString().split('T')[0];
   const [markedDates, setMarkedDates] = useState({ [today]: { selected: true, selectedColor: '#15616d' } });
-  const [currentDate, setCurrentDate] = useState(today);
+  const [selectedDate, setSelectedDate] = useState(today);
 
   const handleDayPress = (day) => {
-    const updatedMarkedDates = { ...markedDates };
-    if (updatedMarkedDates[currentDate]) {
-      delete updatedMarkedDates[currentDate].selected;
+    const newSelectedDate = day.dateString; 
+  
+    const updatedMarkedDates = {
+      [newSelectedDate]: { selected: true, selectedColor: '#15616d' },
+    };
+  
+    if (newSelectedDate !== selectedDate) {
+      updatedMarkedDates[selectedDate] = { selected: false };
     }
-
-    updatedMarkedDates[day.dateString] = { selected: true, selectedColor: '#15616d' };
-
+  
     setMarkedDates(updatedMarkedDates);
-    setCurrentDate(day.dateString);
+    setSelectedDate(newSelectedDate);
   };
 
   useEffect(() => {
-    setMarkedDates({ [today]: { selected: true, selectedColor: 'skyblue' } });
-  }, []);
-
+    setMarkedDates({ [today]: { selected: true, selectedColor: '#15616d' } });
+  },[]);
 
   useFocusEffect(() => {
-    setCurrentDate(today);
+    setSelectedDate(selectedDate);
   });
 
   return (
@@ -57,37 +55,36 @@ const CalendarScreen = () => {
             }}>
             Calendar
           </Text>
-          <TouchableWithoutFeedback  onPress={() => navigation.navigate('Vacation')}>
-          <View
-            style={{
-              borderWidth: 0.5,
-              borderColor: 'white',
-              borderRadius: 5,
-              borderTopWidth: 0.9,
-              borderBottomWidth: 0.9,
-              height: 25,
-              top: 4,
-              flexDirection: 'row',
-            }}>
-            <Text
+          <TouchableWithoutFeedback onPress={() => navigation.navigate('Vacation')}>
+            <View
               style={{
-                margin: 5,
-                color: 'white',
-                fontSize: 9,
-                fontWeight: '400',
+                borderWidth: 0.5,
+                borderColor: 'white',
+                borderRadius: 5,
+                borderTopWidth: 0.9,
+                borderBottomWidth: 0.9,
+                height: 25,
+                top: 4,
+                flexDirection: 'row',
               }}>
-              Vacation
-            </Text>
-           
-            <Image
-              source={require('../../assets/images/holiday.png')}
-              style={{ width: 20, height: 20, margin: 5, bottom: 2 }}
-            />
-           
-          </View>
+              <Text
+                style={{
+                  margin: 5,
+                  color: 'white',
+                  fontSize: 9,
+                  fontWeight: '400',
+                }}>
+                Vacation
+              </Text>
+
+              <Image
+                source={require('../../assets/images/holiday.png')}
+                style={{ width: 20, height: 20, margin: 5, bottom: 2 }}
+              />
+            </View>
           </TouchableWithoutFeedback>
         </View>
-        
+
         <ScrollView
           style={{
             flex: 1,
@@ -108,13 +105,12 @@ const CalendarScreen = () => {
               textDisabledColor: '#444',
               monthTextColor: '#888',
             }}
-            markedDates={markedDates} 
+            markedDates={markedDates}
             onDayPress={handleDayPress}
           />
           <View style={styles.selectedDateContainer}>
-            <Text style={styles.selectedDateText}>Showing orders for: {currentDate}</Text>
+            <Text style={styles.selectedDateText}>Showing orders for: {selectedDate}</Text>
           </View>
-         {/* <TouchableOpacity onPress={() => navigation.navigate('file')}><Text style={{color:'black',textAlign:'center'}}>file</Text></TouchableOpacity> */}
         </ScrollView>
       </>
     </View>
@@ -129,7 +125,7 @@ const styles = StyleSheet.create({
   selectedDateText: {
     color: 'black',
     textAlign: 'center',
-    marginTop: 10
+    marginTop: 10,
   },
 });
 

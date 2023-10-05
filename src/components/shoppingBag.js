@@ -38,7 +38,7 @@ const ShoppingBag = () => {
         <Image  source={require('../assets/images/shoppingcart.png')} style={{width:220, height:220,alignSelf:'center', marginTop:120}}/>
         <Text style={{textAlign:'center', color:'black',fontSize:18, fontWeight:'500'}}>You don't have any items in your bag</Text>
         <Text style={{textAlign:'center', color:'black',fontSize:13, fontWeight:'300',marginTop:8}}>Your favourite items are just a click away</Text>
-        <View style={{ backgroundColor:"#800080",marginTop:30,width:"50%",alignSelf:'center',borderRadius:5}}>
+        <View style={{ backgroundColor:"#15616d",marginTop:30,width:"50%",alignSelf:'center',borderRadius:5}}>
             <Text style={{color:'white',textAlign:'center',margin:10,}} onPress={goToHomeScreen}>Start Shopping</Text>
         </View>
     </ScrollView>

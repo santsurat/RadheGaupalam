@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, Image, StyleSheet, ScrollView,TouchableWithoutFeedback} from 'react-native';
 import Rupee from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 
 const CardOfItems = ({selectedCategory, searchQuery,isEmpty}) => {
@@ -113,9 +114,13 @@ const CardOfItems = ({selectedCategory, searchQuery,isEmpty}) => {
           </View>
         </View>
       </View>
-      <View style={styles.buttonContainer}>
-        <Text style={styles.buyOnce}>BUY ONCE</Text>
-        <Text style={styles.subscribeButton}>SUBSCRIBE</Text>
+      <View style={{display:'flex',flexDirection:'row',left:20,top:20,gap:15,}}>
+        <View style={{borderWidth:1,borderColor:'#15616d',borderRadius:5,width:80}}>
+          <Text style={{color:'black', textAlign:'center'}}>+ BUY ONCE</Text>
+        </View>
+        <View style={{backgroundColor:'#15616d',borderRadius:5 ,width:80}}>
+          <Text style={{color:'white',textAlign:'center'}}>SUBSCRIBE</Text>
+        </View>
       </View>
     </View>
   </View>
@@ -140,7 +145,7 @@ const CardOfItems = ({selectedCategory, searchQuery,isEmpty}) => {
 const styles = StyleSheet.create({
   cardContainer: {
     borderWidth: 0.9,
-    borderColor: 'orange',
+    borderColor: '#15616d',
     padding: 20,
     marginTop: 15,
     marginLeft: 10,
@@ -156,8 +161,8 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 5,
-    borderWidth: 2,
-    borderColor: 'orange',
+    borderWidth: 1,
+    borderColor: '#15616d',
   },
   brand: {
     color: 'black',
@@ -201,29 +206,31 @@ const styles = StyleSheet.create({
     fontSize: 20,
     bottom: 5,
   },
-  buttonContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    gap: 20,
-    top: 18,
-    marginLeft: 10,
-  },
-  buyOnce: {
-    color: 'black',
-    borderWidth: 0.9,
-    borderRadius: 5,
-    padding: 5,
-    bottom: 5,
-    backgroundColor: 'white',
-  },
-  subscribeButton: {
-    color: 'white',
-    borderWidth: 0.9,
-    borderRadius: 5,
-    bottom: 5,
-    padding: 5,
-    backgroundColor: '#15616d',
-  },
+  // buttonContainer: {
+  //   display: 'flex',
+  //   flexDirection: 'row',
+  //   gap: 20,
+  //   top: 18,
+  //   marginLeft: 10,
+  // },
+  // buyOnce: {
+  //   color: 'black',
+  //   borderWidth: 0.9,
+  //   borderRadius: 5,
+  //   // padding: 5,
+  //   bottom: 5,
+  //   backgroundColor: 'white',
+  //   display:'flex',
+  //   flexDirection:'row'
+  // },
+  // subscribeButton: {
+  //   color: 'white',
+  //   borderWidth: 0.9,
+  //   borderRadius: 5,
+  //   bottom: 5,
+  //   padding: 5,
+  //   backgroundColor: '#15616d',
+  // },
   vegIcon: {
     width: 15,
     height: 15,

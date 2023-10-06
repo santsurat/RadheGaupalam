@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {View, Text, Image, StyleSheet, ScrollView,TouchableWithoutFeedback} from 'react-native';
 import Rupee from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
@@ -6,6 +6,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 
 const CardOfItems = ({selectedCategory, searchQuery,isEmpty}) => {
+  const [isBuyOncePressed, setIsBuyOncePressed] = useState(false);
   const items = [
     {
       name: 'Cow Milk',
@@ -87,58 +88,69 @@ const CardOfItems = ({selectedCategory, searchQuery,isEmpty}) => {
     navigation.navigate('ProductDetails', { items,selectedIndex });
   };
 
+  const toggleBuyOncePressed = () => {
+    setIsBuyOncePressed(!isBuyOncePressed);
+  };
+
   return (
     <ScrollView alwaysBounceVertical={true}>
-  {filteredItems.map((item, index) => (
-    <TouchableWithoutFeedback
-    key={index}
-    onPress={() => navigateToProductDetail(index)}
-  >
-  <View style={styles.cardContainer}>
-    <Image source={item.imageSource} style={styles.imageCard} />
-    <View>
-      <Text style={styles.brand}>{item.brand}</Text>
-      <Text style={styles.name}>{item.name}</Text>
-      <View style={styles.ltrContainer}>
-        <Text style={styles.ltrText}>
-          <Image
-            source={require('../assets/icons/veg.png')}
-            style={styles.vegIcon}
-          />
-        </Text>
-        <Text style={styles.ltrText}>{item.quantity}</Text>
-      <View style={styles.detailsContainer}>
-        <View style={styles.priceContainer}>
-          <Rupee name="currency-rupee" color="black" size={20}  />
-          <Text style={styles.priceText}>{item.price}</Text>
+    {filteredItems.map((item, index) => (
+      <TouchableWithoutFeedback
+        key={index}
+        onPress={() => navigateToProductDetail(index)}>
+        <View style={styles.cardContainer}>
+          <Image source={item.imageSource} style={styles.imageCard} />
+          <View>
+            <Text style={styles.brand}>{item.brand}</Text>
+            <Text style={styles.name}>{item.name}</Text>
+            <View style={styles.ltrContainer}>
+              <Text style={styles.ltrText}>
+                <Image
+                  source={require('../assets/icons/veg.png')}
+                  style={styles.vegIcon}
+                />
+              </Text>
+              <Text style={styles.ltrText}>{item.quantity}</Text>
+              <View style={styles.detailsContainer}>
+                <View style={styles.priceContainer}>
+                  <Rupee name="currency-rupee" color="black" size={15} />
+                  <Text style={styles.priceText}>{item.price}</Text>
+                </View>
+              </View>
+              <View style={{ display: 'flex', flexDirection: 'row', right: 110, top: 25, gap: 20 }}>
+              {isBuyOncePressed ? null : (
+                    <View style={{ borderWidth: 0.5, borderColor: 'black', borderRadius: 5, flexDirection: 'row' }}>
+                      <View style={{ backgroundColor: '#15616d', width: 15, borderTopLeftRadius: 4, borderBottomLeftRadius: 4 }}>
+                        <Text style={{ color: 'white', left: 5, top: 3 }}>-</Text>
+                      </View>
+                      <Text style={{ color: 'black', fontSize: 11, fontWeight: '300', textAlign: 'center', top: 6, width: 60, }} onPress={toggleBuyOncePressed}>BUY ONCE</Text>
+                      <View style={{ backgroundColor: '#15616d', width: 15, borderTopRightRadius: 4, borderBottomRightRadius: 4 }}>
+                        <Text style={{ color: 'white', left: 4, top: 3 }}>+</Text>
+                      </View>
+                    </View>
+                  )}
+                <View style={{ borderColor: 'black', borderRadius: 5, backgroundColor: '#15616d', height: 30, width: 80 }}>
+                  <Text style={{ color: 'white', fontSize: 11, textAlign: 'center', top: 7 }}>SUBSCRIBE</Text>
+                </View>
+              </View>
+            </View>
           </View>
         </View>
-      </View>
-      <View style={{display:'flex',flexDirection:'row',left:20,top:20,gap:15,}}>
-        <View style={{borderWidth:1,borderColor:'#15616d',borderRadius:5,width:80}}>
-          <Text style={{color:'black', textAlign:'center'}}>+ BUY ONCE</Text>
-        </View>
-        <View style={{backgroundColor:'#15616d',borderRadius:5 ,width:80}}>
-          <Text style={{color:'white',textAlign:'center'}}>SUBSCRIBE</Text>
-        </View>
-      </View>
+      </TouchableWithoutFeedback>
+    ))}
+    <View style={styles.footer}>
+      <Text
+        style={{
+          color: 'black',
+          fontSize: 20,
+          textAlign: 'center',
+          fontWeight: '400',
+        }}>
+        No More Items
+      </Text>
     </View>
-  </View>
-  </TouchableWithoutFeedback>
-))}
-      <View style={styles.footer}>
-        <Text
-          style={{
-            color: 'black',
-            fontSize: 20,
-            textAlign: 'center',
-            fontWeight: '400',
-          }}>
-          No More Items
-        </Text>
-      </View>
-      <View style={{height: 200}}></View>
-    </ScrollView>
+    <View style={{ height: 200 }}></View>
+  </ScrollView>
   );
 };
 
@@ -203,34 +215,10 @@ const styles = StyleSheet.create({
   },
   priceText: {
     color: 'black',
-    fontSize: 20,
-    bottom: 5,
+    fontSize: 15,
+    bottom: 4,
   },
-  // buttonContainer: {
-  //   display: 'flex',
-  //   flexDirection: 'row',
-  //   gap: 20,
-  //   top: 18,
-  //   marginLeft: 10,
-  // },
-  // buyOnce: {
-  //   color: 'black',
-  //   borderWidth: 0.9,
-  //   borderRadius: 5,
-  //   // padding: 5,
-  //   bottom: 5,
-  //   backgroundColor: 'white',
-  //   display:'flex',
-  //   flexDirection:'row'
-  // },
-  // subscribeButton: {
-  //   color: 'white',
-  //   borderWidth: 0.9,
-  //   borderRadius: 5,
-  //   bottom: 5,
-  //   padding: 5,
-  //   backgroundColor: '#15616d',
-  // },
+
   vegIcon: {
     width: 15,
     height: 15,

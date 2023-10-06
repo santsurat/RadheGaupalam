@@ -192,7 +192,6 @@ const styles = StyleSheet.create({
   },
   myAddressDiv:{
     flexDirection:'row',
-    // display:'flex',
     marginTop:20,
     marginLeft:30,
     gap:20

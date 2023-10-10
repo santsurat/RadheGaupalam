@@ -48,7 +48,7 @@ const CardOfItems = ({selectedCategory, searchQuery, isEmpty}) => {
       price: 460,
       description:
         'Creamy and Soft paneer made fresh with buffalo milk goodness.',
-        isBuyOncePressed: true,
+      isBuyOncePressed: true,
     },
     {
       name: 'Cow Ghee',
@@ -58,8 +58,8 @@ const CardOfItems = ({selectedCategory, searchQuery, isEmpty}) => {
       price: 600,
       description:
         'The production of desi cow ghee is steeped in tradition and craftsmanship. It involves a meticulous process of simmering butter made from desi cow milk to remove water and milk solids, resulting in pure golden ghee.',
-        isBuyOncePressed: true,
-      },
+      isBuyOncePressed: true,
+    },
     {
       name: 'Buffalo Ghee',
       imageSource: require('../assets/images/buffaloghee.png'),
@@ -68,14 +68,15 @@ const CardOfItems = ({selectedCategory, searchQuery, isEmpty}) => {
       price: 1260,
       description:
         'Our ghee is meticulously handcrafted from the milk of Murrah Buffaloes, known for their creamy and high-fat milk. The result is a velvety-smooth texture that melts in your mouth, leaving behind a luscious taste.',
-        isBuyOncePressed: true,
-      },
+      isBuyOncePressed: true,
+    },
   ]);
 
- 
-  const filteredItems = items.filter((item) => {
+  const filteredItems = items.filter(item => {
     const name = item.name.toLowerCase();
-    const selectedCategoryLower = selectedCategory ? selectedCategory.toLowerCase() : '';
+    const selectedCategoryLower = selectedCategory
+      ? selectedCategory.toLowerCase()
+      : '';
     const searchQueryLower = searchQuery ? searchQuery.toLowerCase() : '';
 
     if (isEmpty) {
@@ -90,20 +91,23 @@ const CardOfItems = ({selectedCategory, searchQuery, isEmpty}) => {
 
   const navigation = useNavigation();
 
-  const navigateToProductDetail = (selectedIndex) => {
-    navigation.navigate('ProductDetails', { items, selectedIndex }); 
+  const navigateToProductDetail = selectedIndex => {
+    navigation.navigate('ProductDetails', {items, selectedIndex});
   };
 
-  const toggleBuyOncePressed = (index) => {
+  const toggleBuyOncePressed = index => {
     const updatedItems = [...items];
-    updatedItems[index].isBuyOncePressed = !updatedItems[index].isBuyOncePressed;
+    updatedItems[index].isBuyOncePressed =
+      !updatedItems[index].isBuyOncePressed;
     setItems(updatedItems);
   };
 
   return (
     <ScrollView alwaysBounceVertical={true}>
       {filteredItems.map((item, index) => (
-        <TouchableWithoutFeedback key={index} onPress={() => navigateToProductDetail(index)}>
+        <TouchableWithoutFeedback
+          key={index}
+          onPress={() => navigateToProductDetail(index)}>
           <View style={styles.cardContainer}>
             <Image source={item.imageSource} style={styles.imageCard} />
             <View>
@@ -111,7 +115,10 @@ const CardOfItems = ({selectedCategory, searchQuery, isEmpty}) => {
               <Text style={styles.name}>{item.name}</Text>
               <View style={styles.ltrContainer}>
                 <Text style={styles.ltrText}>
-                  <Image source={require('../assets/icons/veg.png')} style={styles.vegIcon} />
+                  <Image
+                    source={require('../assets/icons/veg.png')}
+                    style={styles.vegIcon}
+                  />
                 </Text>
                 <Text style={styles.ltrText}>{item.quantity}</Text>
                 <View style={styles.detailsContainer}>
@@ -121,34 +128,44 @@ const CardOfItems = ({selectedCategory, searchQuery, isEmpty}) => {
                   </View>
                 </View>
               </View>
-              <View style={{ display: 'flex', flexDirection: 'row', marginTop: 20, gap: 20, left: 15 }}>
+              <View
+                style={styles.mainContainerOfButton}>
                 {item.isBuyOncePressed ? (
-                  <View style={{ borderWidth: 1, borderColor: 'black', borderRadius: 5 }}>
+                  <View
+                    style={{
+                      borderWidth: 1,
+                      borderColor: 'black',
+                      borderRadius: 5,
+                    }}>
                     <Text
-                      style={{
-                        color: 'black',
-                        fontWeight: '300',
-                        padding: 5,
-                        fontSize: 13,
-                      }}
-                      onPress={() => toggleBuyOncePressed(index)}
-                    >
+                      style={styles.buyOnceText}
+                      onPress={() => toggleBuyOncePressed(index)}>
                       BUY ONCE
                     </Text>
                   </View>
                 ) : (
-                  <View style={{ display: 'flex', flexDirection: 'row', borderWidth: 1, borderRadius: 5, width: 73 }}>
-                    <View style={{ backgroundColor: '#15616d', borderTopLeftRadius: 4, borderBottomLeftRadius: 4 }}>
-                      <MaterialCommunityIcons name='minus' color='white' size={20} style={{ top: 5 }} />
+                  <View style={styles.mainConainerOfSign}>
+                    <View style={styles.bgOfMinus}>
+                      <MaterialCommunityIcons
+                        name="minus"
+                        color="white"
+                        size={20}
+                        style={{top: 5}}
+                      />
                     </View>
-                    <Text style={{ color: 'black', padding: 5, fontSize: 15, left: 7 }}>1</Text>
-                    <View style={{ backgroundColor: '#15616d', left: 15, borderTopRightRadius: 4, borderBottomRightRadius: 4 }}>
-                      <MaterialCommunityIcons name='plus' color='white' size={20} style={{ top: 5 }} />
+                    <Text style={styles.numberText}>1</Text>
+                    <View style={styles.bgOfPlus}>
+                      <MaterialCommunityIcons
+                        name="plus"
+                        color="white"
+                        size={20}
+                        style={{top: 5}}
+                      />
                     </View>
                   </View>
                 )}
-                <View style={{ borderWidth: 1, borderColor: 'black', borderRadius: 5, backgroundColor: '#15616d' }}>
-                  <Text style={{ color: 'white', fontSize: 15, fontWeight: '300', padding: 5 }}>SUBSCRIBE</Text>
+                <View style={styles.bgOfSubscribe}>
+                  <Text style={styles.subscribeText}>SUBSCRIBE</Text>
                 </View>
               </View>
             </View>
@@ -166,7 +183,7 @@ const CardOfItems = ({selectedCategory, searchQuery, isEmpty}) => {
           No More Items
         </Text>
       </View>
-      <View style={{ height: 200 }}></View>
+      <View style={{height: 200}}></View>
     </ScrollView>
   );
 };
@@ -253,6 +270,57 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     top: 10,
   },
+  buyOnceText: {
+    color: 'black',
+    fontWeight: '300',
+    padding: 5,
+    fontSize: 13,
+  },
+  mainConainerOfSign: {
+    display: 'flex',
+    flexDirection: 'row',
+    borderWidth: 1,
+    borderRadius: 5,
+    width: 73,
+  },
+  bgOfMinus: {
+    display: 'flex',
+    flexDirection: 'row',
+    borderWidth: 1,
+    borderRadius: 5,
+    width: 73,
+  },
+  numberText: {
+    color: 'black',
+    padding: 5,
+    fontSize: 15,
+    left: 7,
+  },
+  bgOfPlus: {
+    backgroundColor: '#15616d',
+    left: 15,
+    borderTopRightRadius: 4,
+    borderBottomRightRadius: 4,
+  },
+  bgOfSubscribe: {
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 5,
+    backgroundColor: '#15616d',
+  },
+  subscribeText: {
+    color: 'white',
+    fontSize: 14,
+    fontWeight: '300',
+    padding: 5,
+  },
+  mainContainerOfButton:{
+    display: 'flex',
+    flexDirection: 'row',
+    marginTop: 20,
+    gap: 20,
+    left: 15,
+  }
 });
 
 export default CardOfItems;

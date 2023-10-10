@@ -232,7 +232,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginLeft: 70,
     marginRight: 70,
-    // borderStyle: 'dotted',
   },
   ltrContainer:{
     flexDirection:'row',

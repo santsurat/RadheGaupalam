@@ -1,12 +1,17 @@
-import React,{useState} from 'react';
-import {View, Text, Image, StyleSheet, ScrollView,TouchableWithoutFeedback} from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  ScrollView,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import Rupee from 'react-native-vector-icons/MaterialIcons';
-import { useNavigation } from '@react-navigation/native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {useNavigation} from '@react-navigation/native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-
-const CardOfItems = ({selectedCategory, searchQuery,isEmpty}) => {
-  const [isBuyOncePressed, setIsBuyOncePressed] = useState(false);
+const CardOfItems = ({selectedCategory, searchQuery, isEmpty}) => {
   const items = [
     {
       name: 'Cow Milk',
@@ -14,7 +19,7 @@ const CardOfItems = ({selectedCategory, searchQuery,isEmpty}) => {
       brand: 'Radhe Gaupalam',
       quantity: '1 ltr',
       price: 60,
-      description:'Farm Fresh Cow Milk from Desi Cows.'
+      description: 'Farm Fresh Cow Milk from Desi Cows.',
     },
     {
       name: 'Buffalo Milk',
@@ -22,7 +27,7 @@ const CardOfItems = ({selectedCategory, searchQuery,isEmpty}) => {
       brand: 'Radhe Gaupalam',
       quantity: '1 ltr',
       price: 70,
-      description:'Farm Fresh Buffalo Milk from Murrah Buffaloes.'
+      description: 'Farm Fresh Buffalo Milk from Murrah Buffaloes.',
     },
     {
       name: 'Cow Paneer',
@@ -30,7 +35,7 @@ const CardOfItems = ({selectedCategory, searchQuery,isEmpty}) => {
       brand: 'Radhe Gaupalam',
       quantity: '1 kg',
       price: 420,
-      description:'Fresh cow paneer made with the finest ingredients.'
+      description: 'Fresh cow paneer made with the finest ingredients.',
     },
     {
       name: 'Buffalo Paneer',
@@ -38,7 +43,8 @@ const CardOfItems = ({selectedCategory, searchQuery,isEmpty}) => {
       brand: 'Radhe Gaupalam',
       quantity: '1 kg',
       price: 460,
-      description:"Creamy and Soft paneer made fresh with buffalo milk goodness."
+      description:
+        'Creamy and Soft paneer made fresh with buffalo milk goodness.',
     },
     {
       name: 'Cow Ghee',
@@ -46,7 +52,8 @@ const CardOfItems = ({selectedCategory, searchQuery,isEmpty}) => {
       brand: 'Radhe Gaupalam',
       quantity: '1 ltr',
       price: 600,
-      description:'The production of desi cow ghee is steeped in tradition and craftsmanship. It involves a meticulous process of simmering butter made from desi cow milk to remove water and milk solids, resulting in pure golden ghee.'
+      description:
+        'The production of desi cow ghee is steeped in tradition and craftsmanship. It involves a meticulous process of simmering butter made from desi cow milk to remove water and milk solids, resulting in pure golden ghee.',
     },
     {
       name: 'Buffalo Ghee',
@@ -54,103 +61,95 @@ const CardOfItems = ({selectedCategory, searchQuery,isEmpty}) => {
       brand: 'Radhe Gaupalam',
       quantity: '1 ltr',
       price: 1260,
-      description:'Our ghee is meticulously handcrafted from the milk of Murrah Buffaloes, known for their creamy and high-fat milk. The result is a velvety-smooth texture that melts in your mouth, leaving behind a luscious taste.'
+      description:
+        'Our ghee is meticulously handcrafted from the milk of Murrah Buffaloes, known for their creamy and high-fat milk. The result is a velvety-smooth texture that melts in your mouth, leaving behind a luscious taste.',
     },
   ];
 
-  const filteredItems = items.filter((item) => {
+  const filteredItems = items.filter(item => {
     const name = item.name.toLowerCase();
     const selectedCategoryLower = selectedCategory
       ? selectedCategory.toLowerCase()
       : '';
     const searchQueryLower = searchQuery ? searchQuery.toLowerCase() : '';
 
-    if (isEmpty) { 
+    if (isEmpty) {
       return false;
     }
 
     return (
-      (selectedCategoryLower === '' ||
-        name.includes(selectedCategoryLower)) &&
+      (selectedCategoryLower === '' || name.includes(selectedCategoryLower)) &&
       (searchQueryLower === '' || name.includes(searchQueryLower))
     );
   });
 
-
-
   if (isEmpty || (searchQuery && filteredItems.length === 0)) {
-    return   <Text style={styles.noResultsText}>No results to show</Text>; 
+    return <Text style={styles.noResultsText}>No results to show</Text>;
   }
 
   const navigation = useNavigation();
 
-  const navigateToProductDetail = (selectedIndex) => {
-    navigation.navigate('ProductDetails', { items,selectedIndex });
-  };
-
-  const toggleBuyOncePressed = () => {
-    setIsBuyOncePressed(!isBuyOncePressed);
+  const navigateToProductDetail = selectedIndex => {
+    navigation.navigate('ProductDetails', {items, selectedIndex});
   };
 
   return (
     <ScrollView alwaysBounceVertical={true}>
-    {filteredItems.map((item, index) => (
-      <TouchableWithoutFeedback
-        key={index}
-        onPress={() => navigateToProductDetail(index)}>
-        <View style={styles.cardContainer}>
-          <Image source={item.imageSource} style={styles.imageCard} />
-          <View>
-            <Text style={styles.brand}>{item.brand}</Text>
-            <Text style={styles.name}>{item.name}</Text>
-            <View style={styles.ltrContainer}>
-              <Text style={styles.ltrText}>
-                <Image
-                  source={require('../assets/icons/veg.png')}
-                  style={styles.vegIcon}
-                />
-              </Text>
-              <Text style={styles.ltrText}>{item.quantity}</Text>
-              <View style={styles.detailsContainer}>
-                <View style={styles.priceContainer}>
-                  <Rupee name="currency-rupee" color="black" size={15} />
-                  <Text style={styles.priceText}>{item.price}</Text>
+      {filteredItems.map((item, index) => (
+        <TouchableWithoutFeedback
+          key={index}
+          onPress={() => navigateToProductDetail(index)}>
+          <View style={styles.cardContainer}>
+            <Image source={item.imageSource} style={styles.imageCard} />
+            <View>
+              <Text style={styles.brand}>{item.brand}</Text>
+              <Text style={styles.name}>{item.name}</Text>
+              <View style={styles.ltrContainer}>
+                <Text style={styles.ltrText}>
+                  <Image
+                    source={require('../assets/icons/veg.png')}
+                    style={styles.vegIcon}
+                  />
+                </Text>
+                <Text style={styles.ltrText}>{item.quantity}</Text>
+                <View style={styles.detailsContainer}>
+                  <View style={styles.priceContainer}>
+                    <Rupee name="currency-rupee" color="black" size={15} />
+                    <Text style={styles.priceText}>{item.price}</Text>
+                  </View>
                 </View>
               </View>
-              <View style={{ display: 'flex', flexDirection: 'row', right: 110, top: 25, gap: 20 }}>
-              {isBuyOncePressed ? null : (
-                    <View style={{ borderWidth: 0.5, borderColor: 'black', borderRadius: 5, flexDirection: 'row' }}>
-                      <View style={{ backgroundColor: '#15616d', width: 15, borderTopLeftRadius: 4, borderBottomLeftRadius: 4 }}>
-                        <Text style={{ color: 'white', left: 5, top: 3 }}>-</Text>
-                      </View>
-                      <Text style={{ color: 'black', fontSize: 11, fontWeight: '300', textAlign: 'center', top: 6, width: 60, }} onPress={toggleBuyOncePressed}>BUY ONCE</Text>
-                      <View style={{ backgroundColor: '#15616d', width: 15, borderTopRightRadius: 4, borderBottomRightRadius: 4 }}>
-                        <Text style={{ color: 'white', left: 4, top: 3 }}>+</Text>
-                      </View>
-                    </View>
-                  )}
-                <View style={{ borderColor: 'black', borderRadius: 5, backgroundColor: '#15616d', height: 30, width: 80 }}>
-                  <Text style={{ color: 'white', fontSize: 11, textAlign: 'center', top: 7 }}>SUBSCRIBE</Text>
+              <View style={{display:'flex',flexDirection:'row',marginTop:20,gap:10,left:10}}>
+                <View style={{borderWidth:1,borderColor:'black',borderRadius:5,flexDirection:'row'}}>
+                <View style={{backgroundColor:'#15616d',borderBottomLeftRadius:4,borderTopLeftRadius:4}}>
+                <MaterialCommunityIcons  name='minus' color='white' style={{top:8}}/>
+                </View>
+                <Text style={{color: 'black',fontWeight:'300',fontSize:13,padding:5}}>BUY ONCE</Text>
+                <View style={{backgroundColor:'#15616d',borderBottomRightRadius:4,borderTopRightRadius:4}}>
+                <MaterialCommunityIcons  name='plus' color='white'style={{top:8}} />
+                </View>
+                </View>
+                <View style={{borderWidth:1,borderColor:'black',padding:5,borderRadius:5,backgroundColor:'#15616d'}}>
+                <Text style={{color: 'white',fontSize:15,fontWeight:'300'}}>SUBSCRIBE</Text>
                 </View>
               </View>
             </View>
           </View>
-        </View>
-      </TouchableWithoutFeedback>
-    ))}
-    <View style={styles.footer}>
-      <Text
-        style={{
-          color: 'black',
-          fontSize: 20,
-          textAlign: 'center',
-          fontWeight: '400',
-        }}>
-        No More Items
-      </Text>
-    </View>
-    <View style={{ height: 200 }}></View>
-  </ScrollView>
+        </TouchableWithoutFeedback>
+      ))}
+      <View style={styles.footer}>
+        <Text
+          style={{
+            color: 'black',
+            fontSize: 20,
+            textAlign: 'center',
+            fontWeight: '400',
+          }}>
+          No More Items
+        </Text>
+      </View>
+      <View style={{height: 200}}></View>
+    </ScrollView>
   );
 };
 
@@ -180,7 +179,6 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 8,
     marginLeft: 10,
-    
   },
   noResultsText: {
     color: '#333',
@@ -197,7 +195,7 @@ const styles = StyleSheet.create({
   detailsContainer: {
     display: 'flex',
     top: 10,
-    left:80
+    left: 80,
   },
   ltrText: {
     color: 'black',
@@ -211,7 +209,7 @@ const styles = StyleSheet.create({
     marginLeft: '10%',
     display: 'flex',
     flexDirection: 'row',
-    bottom:10
+    bottom: 10,
   },
   priceText: {
     color: 'black',
@@ -233,11 +231,10 @@ const styles = StyleSheet.create({
     marginLeft: 70,
     marginRight: 70,
   },
-  ltrContainer:{
-    flexDirection:'row',
-    top:10,
-    
-  }
+  ltrContainer: {
+    flexDirection: 'row',
+    top: 10,
+  },
 });
 
 export default CardOfItems;

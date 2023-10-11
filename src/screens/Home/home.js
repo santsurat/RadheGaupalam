@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -12,14 +12,14 @@ import Notification from 'react-native-vector-icons/Ionicons';
 import Locationdot from 'react-native-vector-icons/FontAwesome6';
 import Close from 'react-native-vector-icons/MaterialCommunityIcons';
 import Carousel from '../../components/Carousel';
-import CardOfItems from '../../components/CardOfItems'; 
-import { useNavigation } from '@react-navigation/native';
+import CardOfItems from '../../components/CardOfItems';
+import {useNavigation} from '@react-navigation/native';
 
 const Home = () => {
   const navigation = useNavigation();
 
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [iscount, isSetCount] = useState(0);
+  const [iscount, setIsCount] = useState(0);
 
   const handleCategoryPress = (category) => {
     setSelectedCategory((prevCategory) =>
@@ -31,15 +31,21 @@ const Home = () => {
     return selectedCategory === category;
   };
 
+  const handleAddToShoppingBag = () => {
+    setIsCount(iscount + 1);
+  };
+
   const handleReplaceScreen = () => {
-    navigation.navigate('ShoppingBag'); 
+    handleAddToShoppingBag(); // Update the count when adding to shopping bag
+    navigation.navigate('ShoppingBag');
   };
 
   return (
     <View style={styles.mainContainer}>
       <>
-        <View style={{ flexDirection: 'row' }}>
-          <TouchableWithoutFeedback onPress={() => navigation.navigate('Profile')}>
+        <View style={{flexDirection: 'row'}}>
+          <TouchableWithoutFeedback
+            onPress={() => navigation.navigate('Profile')}>
             <View>
               <Image
                 source={require('../../assets/images/bullcow.png')}
@@ -54,13 +60,15 @@ const Home = () => {
             </View>
           </TouchableWithoutFeedback>
           <View>
-            <Text style={{ color: 'white', marginTop: 20, marginLeft: 5 }}>
+            <Text style={{color: 'white', marginTop: 20, marginLeft: 5}}>
               Hi, Sant Surat
             </Text>
-            <TouchableWithoutFeedback onPress={() => navigation.navigate('MyAddress')}>
-              <View style={{ marginLeft: 5, flexDirection: 'row', gap: 5, top: 3 }}>
+            <TouchableWithoutFeedback
+              onPress={() => navigation.navigate('MyAddress')}>
+              <View
+                style={{marginLeft: 5, flexDirection: 'row', gap: 5, top: 3}}>
                 <Locationdot name="location-dot" size={15} color="white" />
-                <Text style={{ color: 'white' }}>Home</Text>
+                <Text style={{color: 'white'}}>Home</Text>
               </View>
             </TouchableWithoutFeedback>
           </View>
@@ -71,20 +79,33 @@ const Home = () => {
               flexDirection: 'row',
               gap: 18,
             }}>
-              <TouchableWithoutFeedback onPress={() => navigation.navigate('SearchItems')}>
-            <View style={{ justifyContent: 'center', top: 10 }}>
-              <Icon name="search" size={20} color="orange" />
-            </View>
-            </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback onPress={handleReplaceScreen}>
-            <View style={{ justifyContent: 'center', top: 10 }}>
-              <Icon name="shopping-bag" size={20} color="orange" />
-              <View style={{width:15,height:15,backgroundColor:'red',borderRadius:15,justifyContent:'center',alignItems:'center',left:10,position:'absolute'}}>
-                <Text style={{color:'white',position:'absolute'}}>{iscount}</Text>
+            <TouchableWithoutFeedback
+              onPress={() => navigation.navigate('SearchItems')}>
+              <View style={{justifyContent: 'center', top: 10}}>
+                <Icon name="search" size={20} color="orange" />
               </View>
-            </View>
             </TouchableWithoutFeedback>
-            <View style={{ justifyContent: 'center', top: 10 }}>
+            <TouchableWithoutFeedback onPress={handleAddToShoppingBag}>
+              <View style={{justifyContent: 'center', top: 10}}>
+                <Icon name="shopping-bag" size={20} color="orange" />
+                <View
+                  style={{
+                    width: 15,
+                    height: 15,
+                    backgroundColor: 'red',
+                    borderRadius: 15,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    left: 10,
+                    position: 'absolute',
+                  }}>
+                  <Text style={{color: 'white', position: 'absolute'}}>
+                    {iscount}
+                  </Text>
+                </View>
+              </View>
+            </TouchableWithoutFeedback>
+            <View style={{justifyContent: 'center', top: 10}}>
               <Notification name="notifications" size={20} color="orange" />
             </View>
           </View>
@@ -110,7 +131,8 @@ const Home = () => {
               justifyContent: 'space-evenly',
               padding: 15,
             }}>
-            <TouchableWithoutFeedback onPress={() => handleCategoryPress('Milk')}>
+            <TouchableWithoutFeedback
+              onPress={() => handleCategoryPress('Milk')}>
               <View
                 style={{
                   flexDirection: 'row',
@@ -132,7 +154,8 @@ const Home = () => {
                 )}
               </View>
             </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback onPress={() => handleCategoryPress('Ghee')}>
+            <TouchableWithoutFeedback
+              onPress={() => handleCategoryPress('Ghee')}>
               <View
                 style={{
                   flexDirection: 'row',
@@ -154,7 +177,8 @@ const Home = () => {
                 )}
               </View>
             </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback onPress={() => handleCategoryPress('Paneer')}>
+            <TouchableWithoutFeedback
+              onPress={() => handleCategoryPress('Paneer')}>
               <View
                 style={{
                   flexDirection: 'row',
@@ -179,12 +203,12 @@ const Home = () => {
           </View>
           <View
             style={{
-              borderTopWidth: 0.8,
+              borderTopWidth: 0.8, 
               marginLeft: 15,
               marginRight: 15,
               color: 'grey',
             }}></View>
-          <CardOfItems selectedCategory={selectedCategory} />
+          <CardOfItems selectedCategory={selectedCategory} /> 
         </ScrollView>
       </>
     </View>

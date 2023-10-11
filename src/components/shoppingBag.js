@@ -35,12 +35,16 @@ const ShoppingBag = () => {
         backgroundColor: '#F8F8FF',
         top:35,
       }}>
-        <Image  source={require('../assets/images/shoppingcart.png')} style={{width:220, height:220,alignSelf:'center', marginTop:120}}/>
+        {/* <Image  source={require('../assets/images/shoppingcart.png')} style={{width:220, height:220,alignSelf:'center', marginTop:120}}/>
         <Text style={{textAlign:'center', color:'black',fontSize:18, fontWeight:'500'}}>You don't have any items in your bag</Text>
         <Text style={{textAlign:'center', color:'black',fontSize:13, fontWeight:'300',marginTop:8}}>Your favourite items are just a click away</Text>
         <View style={{ backgroundColor:"#15616d",marginTop:30,width:"50%",alignSelf:'center',borderRadius:5}}>
             <Text style={{color:'white',textAlign:'center',margin:10,}} onPress={goToHomeScreen}>Start Shopping</Text>
-        </View>
+        </View> */}
+      <View style={{display:'flex',flexDirection:'row', margin:20,gap:95}}>
+     <Text style={{color:'#15616d'}}>1 item(s)in bag</Text>
+     <Text style={{color:'#595959'}}>Deliver on : Next Day</Text>
+     </View>
     </ScrollView>
     </View>
   )

@@ -128,15 +128,10 @@ const CardOfItems = ({selectedCategory, searchQuery, isEmpty}) => {
                   </View>
                 </View>
               </View>
-              <View
-                style={styles.mainContainerOfButton}>
-                {item.isBuyOncePressed ? (
-                  <View
-                    style={{
-                      borderWidth: 1,
-                      borderColor: 'black',
-                      borderRadius: 5,
-                    }}>
+              <View style={styles.mainConainerOfButton}>
+                
+              {item.isBuyOncePressed ? (
+                  <View style={styles.bgOfBuyOnce}>
                     <Text
                       style={styles.buyOnceText}
                       onPress={() => toggleBuyOncePressed(index)}>
@@ -153,7 +148,7 @@ const CardOfItems = ({selectedCategory, searchQuery, isEmpty}) => {
                         style={{top: 5}}
                       />
                     </View>
-                    <Text style={styles.numberText}>1</Text>
+                    <Text style={styles.textOfNumber}>1</Text>
                     <View style={styles.bgOfPlus}>
                       <MaterialCommunityIcons
                         name="plus"
@@ -165,7 +160,7 @@ const CardOfItems = ({selectedCategory, searchQuery, isEmpty}) => {
                   </View>
                 )}
                 <View style={styles.bgOfSubscribe}>
-                  <Text style={styles.subscribeText}>SUBSCRIBE</Text>
+                  <Text style={styles.textOfSubscribe}>SUBSCRIBE</Text>
                 </View>
               </View>
             </View>
@@ -283,14 +278,24 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: 73,
   },
-  bgOfMinus: {
+  mainConainerOfButton: {
     display: 'flex',
     flexDirection: 'row',
-    borderWidth: 1,
-    borderRadius: 5,
-    width: 73,
+    marginTop: 20,
+    gap: 20,
+    left: 15,
   },
-  numberText: {
+  bgOfBuyOnce: {
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 5,
+  },
+  bgOfMinus: {
+    backgroundColor: '#15616d',
+    borderTopLeftRadius: 4,
+    borderBottomLeftRadius: 4,
+  },
+  textOfNumber: {
     color: 'black',
     padding: 5,
     fontSize: 15,
@@ -308,19 +313,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: '#15616d',
   },
-  subscribeText: {
+  textOfSubscribe: {
     color: 'white',
     fontSize: 14,
     fontWeight: '300',
     padding: 5,
   },
-  mainContainerOfButton:{
-    display: 'flex',
-    flexDirection: 'row',
-    marginTop: 20,
-    gap: 20,
-    left: 15,
-  }
 });
 
 export default CardOfItems;

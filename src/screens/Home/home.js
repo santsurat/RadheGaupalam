@@ -19,6 +19,7 @@ const Home = () => {
   const navigation = useNavigation();
 
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [iscount, isSetCount] = useState(0);
 
   const handleCategoryPress = (category) => {
     setSelectedCategory((prevCategory) =>
@@ -78,6 +79,9 @@ const Home = () => {
             <TouchableWithoutFeedback onPress={handleReplaceScreen}>
             <View style={{ justifyContent: 'center', top: 10 }}>
               <Icon name="shopping-bag" size={20} color="orange" />
+              <View style={{width:15,height:15,backgroundColor:'red',borderRadius:15,justifyContent:'center',alignItems:'center',left:10,position:'absolute'}}>
+                <Text style={{color:'white',position:'absolute'}}>{iscount}</Text>
+              </View>
             </View>
             </TouchableWithoutFeedback>
             <View style={{ justifyContent: 'center', top: 10 }}>

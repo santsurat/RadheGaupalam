@@ -31,14 +31,6 @@ const Home = () => {
     return selectedCategory === category;
   };
 
-  const handleAddToShoppingBag = () => {
-    setIsCount(iscount + 1);
-  };
-
-  const handleReplaceScreen = () => {
-    handleAddToShoppingBag(); // Update the count when adding to shopping bag
-    navigation.navigate('ShoppingBag');
-  };
 
   return (
     <View style={styles.mainContainer}>
@@ -85,7 +77,7 @@ const Home = () => {
                 <Icon name="search" size={20} color="orange" />
               </View>
             </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback onPress={handleAddToShoppingBag}>
+            <TouchableWithoutFeedback onPress={() => navigation.navigate('ShoppingBag')}>
               <View style={{justifyContent: 'center', top: 10}}>
                 <Icon name="shopping-bag" size={20} color="orange" />
                 <View

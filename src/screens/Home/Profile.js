@@ -10,9 +10,12 @@ import {
 } from 'react-native';
 import React from 'react';
 import Rupee from 'react-native-vector-icons/MaterialIcons';
-
+import { useNavigation } from '@react-navigation/native';
 
 const Profile = () => {
+
+  const navigation = useNavigation();
+
   return (
     <View style={styles.mainContainer}>
       <>
@@ -46,13 +49,16 @@ const Profile = () => {
         <ScrollView style={{flex: 1,backgroundColor:'#fff',marginTop:50}}>
         
             <View style={styles.mainDiv}>
-              <TouchableOpacity  style={styles.myAddressDiv} disabled={true}>
+              <TouchableWithoutFeedback   onPress={() => navigation.navigate('MyAddress')} >
+                <View style={styles.myAddressDiv}>
                 <Image source={require('../../assets/images/location.png')} style={{width:40,height:40,bottom:10}}/>
               <Text style={styles.textName}>My Address</Text>
               <Image source={require('../../assets/images/right.png')} style={{width:20,height:20,left:112,}}/>
-              </TouchableOpacity>
+              </View>
+              </TouchableWithoutFeedback>
               <View style={styles.dividerView}></View>
               <TouchableOpacity  style={styles.myAddressDiv} disabled={true}>
+                
                 <Image source={require('../../assets/images/history.png')} style={{width:40,height:40,bottom:10}}/>
               <Text style={styles.textName}>Order History</Text>
               <Image source={require('../../assets/images/right.png')} style={{width:20,height:20,left:102,}}/>

@@ -12,6 +12,8 @@ import MyAddress from '../components/MyAddress';
 import SearchItems from '../components/searchItems';
 import ShoppingBag from '../components/shoppingBag';
 import ProductDetails from '../components/productDetails';
+import OrderHistory from '../components/OrderHistory';
+import DeliveryPreference from '../components/DeliveryPreference';
 
 const Stack = createStackNavigator();
 
@@ -89,6 +91,24 @@ function AuthNavigator() {
           headerShown: false, 
         }}
       />
+      <Stack.Screen
+      name='OrderHistory'
+      component={OrderHistory}
+      options={{
+        title: 'Order History',
+        headerShown:false ,
+      }}
+      />
+       <Stack.Screen
+      name='DeliveryPreference'
+      component={DeliveryPreference}
+      options={{
+        title: 'Order History',
+        headerShown:false ,
+      }}
+      />
+
+
     </Stack.Navigator>
   );
 }

@@ -57,7 +57,7 @@ const Profile = () => {
               </View>
               </TouchableWithoutFeedback>
               <View style={styles.dividerView}></View>
-              <TouchableWithoutFeedback>
+              <TouchableWithoutFeedback onPress={() => navigation.navigate('OrderHistory')}>
                 <View style={styles.myAddressDiv}>
                 <Image source={require('../../assets/images/history.png')} style={{width:40,height:40,bottom:10}}/>
               <Text style={styles.textName}>Order History</Text>
@@ -65,11 +65,13 @@ const Profile = () => {
               </View>
               </TouchableWithoutFeedback>
               <View style={styles.dividerView}></View>
-              <TouchableOpacity  style={styles.myAddressDiv} disabled={true}>
+              <TouchableWithoutFeedback onPress={() => navigation.navigate('DeliveryPreference')}>
+                <View style={styles.myAddressDiv} > 
                 <Image source={require('../../assets/images/bag.png')} style={{width:40,height:40,bottom:10}}/>
               <Text style={styles.textName}>Delivery Preference</Text>
               <Image source={require('../../assets/images/right.png')} style={{width:20,height:20,left:60,}}/>
-              </TouchableOpacity>
+              </View>
+              </TouchableWithoutFeedback>
             </View>
         
             <View style={styles.mainDiv}>

@@ -45,7 +45,6 @@ const MyAddress = () => {
             flex: 1,
             backgroundColor: '#F8F8FF',
             top: 30,
-            borderRadius: 40,
           }}>
           <Text style={{color: '#5A5A5A', margin: 20}}>
             Your orders will be delivered at this address

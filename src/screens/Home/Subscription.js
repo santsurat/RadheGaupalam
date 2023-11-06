@@ -2,15 +2,12 @@ import React,{useEffect} from 'react';
 import {
   View,
   Text,
-  SafeAreaView,
   StyleSheet,
-  TouchableOpacity,
   TouchableWithoutFeedback,
   ScrollView,
   Image,
-  BackHandler
 } from 'react-native';
-import { ROUTES } from '../../constants';
+// import { ROUTES } from '../../constants';
 import {useNavigation} from '@react-navigation/native'
 
 
